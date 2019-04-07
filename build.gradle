@@ -47,21 +47,10 @@ jacocoTestReport {
 		csv.enabled true
 	}
 
-//	sourceDirectories.from = sourceSets.main.java.sourceDirectories
-//	classDirectories.from = files(sourceSets.main.java.outputDir)
-//	executionData.from = files("$buildDir/jacoco/test.exec")
-//
-//	def fileFilter = ['**/DemoApplication**']
-//	def debugTree = fileTree(dir: "${buildDir}/intermediates/classes/debug", excludes: fileFilter)
-
 	afterEvaluate {
 		getClassDirectories().setFrom(classDirectories.files.collect {
 			fileTree(dir: it, exclude: '**/DemoApplication**')
 		})
-//				{
-//			fileTree(dir: it, exclude: '**/DemoApplication**')
-//		}
-
 	}
 }
 
